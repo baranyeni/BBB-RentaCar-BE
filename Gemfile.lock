@@ -123,6 +123,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.5)
+    rack-cors (0.3.1)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (7.0.4)
@@ -178,6 +179,7 @@ DEPENDENCIES
   devise
   mysql2 (~> 0.5)
   puma (~> 5.0)
+  rack-cors (~> 0.3.1)
   rails (~> 7.0.4)
   tzinfo-data
 

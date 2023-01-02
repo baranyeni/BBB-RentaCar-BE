@@ -33,6 +33,9 @@ gem "bootsnap", require: false
 # for authentication, used the Devise gem.
 gem 'devise'
 
+# CORS fix
+gem 'rack-cors', '~> 0.3.1'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
