@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_02_211207) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_02_220113) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_brands_on_name", unique: true
   end
 
   create_table "car_pictures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "car_id_id", null: false
+    t.bigint "car_id", null: false
+    t.index ["car_id"], name: "index_car_pictures_on_car_id"
+    t.index ["car_id_id"], name: "index_car_pictures_on_car_id_id"
   end
 
   create_table "cars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -34,7 +34,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_211207) do
     t.string "model"
     t.bigint "brand_id", null: false
     t.bigint "color_id", null: false
-    t.bigint "car_picture_id"
     t.bigint "location_id"
     t.integer "kilometer", default: 0, null: false
     t.integer "model_year", null: false
@@ -43,7 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_211207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_cars_on_brand_id"
-    t.index ["car_picture_id"], name: "index_cars_on_car_picture_id"
     t.index ["color_id"], name: "index_cars_on_color_id"
     t.index ["location_id"], name: "index_cars_on_location_id"
     t.index ["plate_number"], name: "index_cars_on_plate_number", unique: true
@@ -52,8 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_211207) do
   create_table "colors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "hex", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["hex"], name: "index_colors_on_hex", unique: true
     t.index ["name"], name: "index_colors_on_name", unique: true
   end
@@ -61,8 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_211207) do
   create_table "locations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "address"
     t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

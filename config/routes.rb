@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth'
 
     resources :users, only: [:show, :update]
+    resources :cars, only: [:index, :show]
   end
 end

@@ -33,15 +33,10 @@ namespace :db do
       Location.create(city: location[i], address: "Address_#{i}")
     end
 
-    puts "Generating car pictures"
-    4.times do |i|
-      CarPicture.create(url: "http://baranyeni.com/BBB-Assets/#{i}/example.jpeg")
-    end
-
     puts "Generating cars"
     4.times do |i|
       Car.create(
-        plate_number: "34 AAA 00#{i}",
+        plate_number: "34 AAA 00#{i + 1}",
         description: "Example description",
         availability: "available",
         fuel_type: "gasoline",
@@ -49,13 +44,17 @@ namespace :db do
         model: "example",
         brand_id: Brand.all.sample.id,
         color_id: Color.all.sample.id,
-        car_picture_id: CarPicture.find(i + 1).id,
         location_id: Location.find(i + 1).id,
         kilometer: 1000,
         model_year: 2010 + i,
         price_per_day: 100 + i*10,
         price_per_month: 2000 + i*25,
       )
+    end
+
+    puts "Generating car pictures"
+    4.times do
+      CarPicture.create(car: Car.where.missing(:pictures).sample, url: "http://baranyeni.com/BBB-Assets/example.jpeg")
     end
   end
 end
