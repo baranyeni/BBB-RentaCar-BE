@@ -32,6 +32,7 @@ gem "bootsnap", require: false
 
 # for authentication, used the Devise gem.
 gem 'devise'
+gem 'devise_token_auth'
 
 # CORS fix
 gem 'rack-cors', '~> 0.3.1'
