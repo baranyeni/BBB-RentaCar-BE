@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_02_220113) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_02_211208) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo_url"
@@ -19,10 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_220113) do
 
   create_table "car_pictures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url", null: false
-    t.bigint "car_id_id", null: false
     t.bigint "car_id", null: false
     t.index ["car_id"], name: "index_car_pictures_on_car_id"
-    t.index ["car_id_id"], name: "index_car_pictures_on_car_id_id"
   end
 
   create_table "cars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -34,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_220113) do
     t.string "model"
     t.bigint "brand_id", null: false
     t.bigint "color_id", null: false
-    t.bigint "location_id"
+    t.bigint "location_id", null: false
     t.integer "kilometer", default: 0, null: false
     t.integer "model_year", null: false
     t.float "price_per_day", null: false
@@ -85,6 +83,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_220113) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "car_pictures", "cars"
   add_foreign_key "cars", "brands"
   add_foreign_key "cars", "colors"
+  add_foreign_key "cars", "locations"
 end

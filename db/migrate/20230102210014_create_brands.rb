@@ -3,8 +3,6 @@ class CreateBrands < ActiveRecord::Migration[7.0]
     create_table :brands do |t|
       t.string :name, null: false, index: { unique: true }
       t.string :logo_url
-
-      t.timestamps
     end
   end
 end

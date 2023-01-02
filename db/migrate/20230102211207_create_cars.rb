@@ -9,8 +9,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.string :model
       t.references :brand, null: false, foreign_key: true
       t.references :color, null: false, foreign_key: true
-      t.references :car_picture
-      t.references :location
+      t.references :location, null: false, foreign_key: true
       t.integer :kilometer, null: false, default: 0
       t.integer :model_year, null: false
       t.float :price_per_day, null: false
