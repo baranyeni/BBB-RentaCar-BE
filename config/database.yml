@@ -14,7 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
+  password: root
   socket: /tmp/mysql.sock
 
 development:
@@ -49,7 +49,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: BBB_RentaCar_BE_production
-  username: BBB_RentaCar_BE
-  password: <%= ENV["BBB_RENTACAR_BE_DATABASE_PASSWORD"] %>
+  url:  <%= ENV["CLEARDB_DATABASE_URL"] %>
+  pool: 5
