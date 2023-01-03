@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_02_211208) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_03_230519) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo_url"
@@ -57,6 +57,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_211208) do
     t.string "city"
   end
 
+  create_table "rentals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "car_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_rentals_on_car_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -87,4 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_211208) do
   add_foreign_key "cars", "brands"
   add_foreign_key "cars", "colors"
   add_foreign_key "cars", "locations"
+  add_foreign_key "rentals", "cars"
+  add_foreign_key "rentals", "users"
 end
