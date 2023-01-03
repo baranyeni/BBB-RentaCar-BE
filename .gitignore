@@ -30,3 +30,6 @@
 
 # Ignore IDE files
 /.idea
+
+# Ignore DS_Store
+.DS_Store
