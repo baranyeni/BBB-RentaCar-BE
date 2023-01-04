@@ -15,7 +15,7 @@ class Rental < ApplicationRecord
 
   def no_rental_overlap
     if Rental.where(car_id: car_id).where('start_date <= ? AND end_date >= ?', end_date, start_date).any?
-      errors.add(:base, 'Car is already booked for this period')
+      errors.add(:rentals, 'Car is already booked for this period.')
     end
   end
 
