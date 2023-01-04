@@ -22,7 +22,7 @@ class Rental < ApplicationRecord
   def calculate_price
     return if start_date.blank? || end_date.blank?
 
-    days = (end_date - start_date).to_i
+    days = (end_date.to_date - start_date.to_date).to_i
     self.price = days < 30 ? days * car.price_per_day : days * (car.price_per_month / 30)
   end
 end
