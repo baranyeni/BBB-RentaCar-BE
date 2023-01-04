@@ -3,6 +3,7 @@ class RentalsController < ApplicationController
 
   def index
     @rentals = Rental.where(user_id: current_user.id)
+                     .order(created_at: :desc)
   end
 
   def create
