@@ -6,4 +6,10 @@ class Car < ApplicationRecord
   belongs_to :location
 
   validates :plate_number, presence: true, uniqueness: true
+
+  def unavailable_dates
+    rentals
+      .where('start_date >= ?', Date.today)
+      .map { |rental| { start_date: rental.start_date, end_date: rental.end_date } }
+  end
 end
