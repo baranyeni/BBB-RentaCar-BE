@@ -16,7 +16,7 @@ class RentalsController < ApplicationController
       )
       @rental.save!
     rescue => e
-      render json: { errors: @rental&.errors || e }, status: :unprocessable_entity
+      render json: { errors: [*(@rental&.errors || e)] }, status: :unprocessable_entity
     end
 
   end
