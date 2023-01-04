@@ -6,7 +6,6 @@ class RentalsController < ApplicationController
   end
 
   def create
-    Rails.logger.info(params.inspect)
     @car = Car.find(params[:car_id])
     @rental = Rental.create!(rental_params.merge(user_id: current_user.id))
   end
