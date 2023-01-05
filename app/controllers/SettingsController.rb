@@ -2,6 +2,12 @@ class SettingsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
 
+  def index
+    @locations = Location.all
+    @colors = Color.all
+    @brands = Brand.all
+  end
+
   def create_location
     @location = Location.new(location_params)
     if @location.save

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     resources :rentals, only: [:index]
 
+    get 'settings', to: 'settings#index'
     post 'settings/create/location', to: 'settings#create_location'
     post 'settings/create/color', to: 'settings#create_color'
     post 'settings/create/brand', to: 'settings#create_brand'
