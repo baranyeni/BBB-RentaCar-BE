@@ -8,5 +8,10 @@ Rails.application.routes.draw do
     end
 
     resources :rentals, only: [:index]
+
+    post 'settings/create/location', to: 'settings#create_location'
+    post 'settings/create/color', to: 'settings#create_color'
+    post 'settings/create/brand', to: 'settings#create_brand'
+    post 'settings/create/car', to: 'settings#create_car'
   end
 end
