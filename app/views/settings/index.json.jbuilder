@@ -25,3 +25,23 @@ json.locations do
     end
   end
 end
+
+json.cars do
+  @cars.each do |car|
+    json.set! car.id do
+      json.brand do
+        json.id car.brand.id
+        json.name car.brand.name
+        json.logo_url car.brand.logo_url
+      end
+      json.model car.model
+      json.plate_number car.plate_number
+      json.color do
+        json.id car.color.id
+        json.name car.color.name
+        json.hex car.color.hex
+      end
+      json.picture_urls car.pictures.map { |picture| picture.url }
+    end
+  end
+end

@@ -6,6 +6,7 @@ class SettingsController < ApplicationController
     @locations = Location.all
     @colors = Color.all
     @brands = Brand.all
+    @cars = Car.all
   end
 
   def create_location
