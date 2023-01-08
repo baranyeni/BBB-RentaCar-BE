@@ -1,23 +1,27 @@
 json.colors do
-  json.array! @colors do |color|
-    json.id color.id
-    json.name color.name
-    json.hex color.hex
+  @colors.each do |color|
+    json.set! color.id do
+      json.name color.name
+      json.hex color.hex
+    end
   end
+
 end
 
 json.brands do
-  json.array! @brands do |brand|
-    json.id brand.id
-    json.name brand.name
-    json.logo_url brand.logo_url
+  @brands.each do |brand|
+    json.set! brand.id do
+      json.name brand.name
+      json.logo_url brand.logo_url
+    end
   end
 end
 
 json.locations do
-  json.array! @locations do |location|
-    json.id location.id
-    json.city location.city
-    json.address location.address
+  @locations.each do |location|
+    json.set! location.id do
+      json.city location.city
+      json.address location.address
+    end
   end
 end
