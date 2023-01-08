@@ -41,6 +41,17 @@ json.cars do
         json.name car.color.name
         json.hex car.color.hex
       end
+      json.location do
+        json.id car.location.id
+        json.city car.location.city
+        json.address car.location.address
+      end
+      json.description car.description
+      json.availability car.availability
+      json.fuel_type car.fuel_type
+      json.gear_type car.gear_type
+      json.price_per_day car.price_per_day
+      json.price_per_month car.price_per_month
       json.picture_urls car.pictures.map { |picture| picture.url }
     end
   end
