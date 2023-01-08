@@ -45,6 +45,42 @@ class SettingsController < ApplicationController
     end
   end
 
+  def update_location
+    @location = Location.find(params[:id])
+    if @location && @location.update!(location_params)
+      render :update_location
+    else
+      render_errors(@location)
+    end
+  end
+
+  def update_color
+    @color = Color.find(params[:id])
+    if @color && @color.update!(color_params)
+      render :update_color
+    else
+      render_errors(@color)
+    end
+  end
+
+  def update_brand
+    @brand = Brand.find(params[:id])
+    if @brand && @brand.update!(brand_params)
+      render :update_brand
+    else
+      render_errors(@brand)
+    end
+  end
+
+  def update_car
+    @car = Car.find(params[:id])
+    if @car && @car.update!(car_params)
+      render :update_car
+    else
+      render_errors(@car)
+    end
+  end
+
   private
 
   def render_errors(model)
